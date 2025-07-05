@@ -11,7 +11,6 @@ import {
 	Clock,
 } from 'lucide-react';
 
-
 interface Benefit {
 	text: string;
 	isPositive: boolean;
@@ -207,7 +206,12 @@ const Home: React.FC = () => {
 			const randomName =
 				nigerianNames[Math.floor(Math.random() * nigerianNames.length)];
 			setNotification({ name: randomName, amount: 2000 });
-			setSpotsLeft((prev) => Math.max(0, prev - 1));
+			setSpotsLeft((prev) => {
+				if (prev > 3) {
+					return prev - 1;
+				}
+				return 3;
+			});
 			notificationTimeoutRef.current = setTimeout(() => {
 				setNotification(null);
 			}, 5000);
@@ -302,7 +306,7 @@ const Home: React.FC = () => {
 	};
 
 	const handleTransferPayment = (): void => {
-		const whatsappLink = `https://wa.link/l24ezs`;  // Replace with your actual WhatsApp number
+		const whatsappLink = `https://wa.link/l24ezs`; // Replace with your actual WhatsApp number
 		window.open(whatsappLink, '_blank');
 		setShowPaymentModal(false); // Close modal
 	};
@@ -364,8 +368,8 @@ const Home: React.FC = () => {
 									Send Receipt to WhatsApp
 								</button>
 								<p className='text-sm text-gray-600 mt-2'>
-									(After transfer, click to send receipt button for
-									confirmation on Whatsapp to get access)
+									(After transfer, click to send receipt button for confirmation
+									on Whatsapp to get access)
 								</p>
 							</div>
 						</div>
