@@ -23,7 +23,7 @@ const AccessCoursePage: React.FC = () => {
     students: 1247,
     rating: 4.8,
     whatsappLink: "https://wa.link/531kt2",
-    whatsappGroupName: "Catfish Millionaires 2024"
+    whatsappGroupName: "Catfish Millionaires 2025"
   };
 
   useEffect(() => {
